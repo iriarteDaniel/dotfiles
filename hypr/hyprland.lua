@@ -68,6 +68,7 @@ local navigator = "firefox"
 
 hl.on("hyprland.start", function()
 	hl.exec_cmd("nm-applet")
+	hl.exec_cmd("systemctl --user start hyprpolkitagent.service")
 	hl.exec_cmd("waybar & hyprpaper")
 	hl.exec_cmd("~/.config/hypr/scripts/suspend.sh")
 	hl.exec_cmd("kitty sh -c 'fastfetch; exec zsh'")
