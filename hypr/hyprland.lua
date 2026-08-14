@@ -56,6 +56,7 @@ local terminal = "kitty"
 local fileManager = "dolphin"
 local menu = "hyprlauncher"
 local navigator = "firefox"
+local lockscreen = "hyprlock"
 
 -------------------
 ---- AUTOSTART ----
@@ -69,8 +70,7 @@ local navigator = "firefox"
 hl.on("hyprland.start", function()
 	hl.exec_cmd("nm-applet")
 	hl.exec_cmd("systemctl --user start hyprpolkitagent.service")
-	hl.exec_cmd("waybar & hyprpaper")
-	hl.exec_cmd("~/.config/hypr/scripts/suspend.sh")
+	hl.exec_cmd("waybar & hyprpaper & hypridle")
 	hl.exec_cmd("kitty sh -c 'fastfetch; exec zsh'")
 end)
 
@@ -284,7 +284,7 @@ hl.bind(
 	hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'")
 )
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
-hl.bind(mainMod .. " + L", hl.dsp.exec_cmd("swaylock"))
+hl.bind(mainMod .. " + L", hl.dsp.exec_cmd(lockscreen))
 hl.bind(mainMod .. " + W", hl.dsp.exec_cmd(navigator))
 hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + R", hl.dsp.exec_cmd(menu))
