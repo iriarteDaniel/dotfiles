@@ -21,7 +21,7 @@ hl.config({
 		force_zero_scaling = true,
 	},
 	general = {
-		gaps_in = 5,
+		gaps_in = 10,
 		gaps_out = 20,
 		border_size = 2,
 	},
@@ -67,9 +67,10 @@ local navigator = "firefox"
 -- Or execute your favorite apps at launch like this:
 
 hl.on("hyprland.start", function()
-	hl.exec_cmd("kitty --detach zsh -c 'fastfetch; exec bash'")
 	hl.exec_cmd("nm-applet")
 	hl.exec_cmd("waybar & hyprpaper")
+	hl.exec_cmd("~/.config/hypr/scripts/suspend.sh")
+	hl.exec_cmd("kitty sh -c 'fastfetch; exec zsh'")
 end)
 
 -------------------------------
@@ -106,7 +107,7 @@ hl.env("HYPRCURSOR_SIZE", "24")
 -- Refer to https://wiki.hypr.land/Configuring/Basics/Variables/
 hl.config({
 	general = {
-		gaps_in = 5,
+		gaps_in = 0,
 		gaps_out = 20,
 
 		border_size = 2,
@@ -227,7 +228,8 @@ hl.config({
 hl.config({
 	misc = {
 		force_default_wallpaper = 0, -- Set to 0 or 1 to disable the anime mascot wallpapers
-		disable_hyprland_logo = false, -- If true disables the random hyprland logo / anime girl background. :(
+		disable_hyprland_logo = true, -- If true disables the random hyprland logo / anime girl background. :(
+		disable_splash_rendering = true,
 	},
 })
 
@@ -281,6 +283,7 @@ hl.bind(
 	hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'")
 )
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
+hl.bind(mainMod .. " + L", hl.dsp.exec_cmd("swaylock"))
 hl.bind(mainMod .. " + W", hl.dsp.exec_cmd(navigator))
 hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + R", hl.dsp.exec_cmd(menu))
