@@ -284,7 +284,7 @@ hl.bind(
 	hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'")
 )
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
-hl.bind(mainMod .. " + L", hl.dsp.exec_cmd(lockscreen))
+hl.bind(mainMod .. " + L", hl.dsp.exec_cmd("wlogout"))
 hl.bind(mainMod .. " + W", hl.dsp.exec_cmd(navigator))
 hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + R", hl.dsp.exec_cmd(menu))
